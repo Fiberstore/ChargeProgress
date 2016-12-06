@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    testCompile 'junit:junit:4.12'
+
+    //省市区三级联动城市选择器
+    compile 'liji.library.dev:citypickerview:0.4.0'
+    //头像选择，拍照或者相册
+    compile 'liji.library.dev:takephotolib:1.0.2'
+    //图集功能，缩放
+    compile 'liji.library.dev:imagezoom:1.2.1'
+    //圆形图片加载
+    compile 'liji.library.dev:circleimageview:0.1.0'
+    //多行单选checkbox
+    compile 'liji.library.dev:multilinechooselib:1.4.0'
+    //封装焦点图
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    //KLog日志打印
+    compile 'com.github.zhaokaiqiang.klog:library:1.5.0'
+}

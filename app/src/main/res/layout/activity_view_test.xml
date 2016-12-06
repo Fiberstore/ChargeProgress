@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_view_test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.ly.animationdemo.activity.ViewTestActivity">
+
+
+    <com.example.chargingprogress.ChargingProgess
+        android:id="@+id/chargingprigressView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        app:cgv_item_count="10"
+        app:cgv_item_height="20dp"
+        app:cgv_item_width="50dp" />
+
+    <Button
+        android:id="@+id/btnACDraw"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:text="交流动画" />
+
+    <Button
+        android:id="@+id/btnDCDraw"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:text="直流动画" />
+</LinearLayout>
