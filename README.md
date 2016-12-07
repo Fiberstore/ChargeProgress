@@ -1,20 +1,8 @@
----
-title: android 自定义view+属性动画实现充电进度条功能
-categories: 
-- 技术
-- android
-date: 2016-12-06 21:24:01
-tags:
-- 自定义view
-- 属性动画
-- 进度条
----
-
 近期项目中需要使用到一种类似手机电池充电进度的动画效果，以前没学属性动画的时候，是用图片+定时器的方式来完成的，最近一直在学习动画这一块，再加上复习一下自定义view的相关知识点，所以打算用属性动画和自定义view的方式来完成这个功能，将它开源出来，供有需要的人了解一下相关的内容。
 
 本次实现的功能类似下面的效果：
 
-<!--more-->
+
 ![充电效果](http://upload-images.jianshu.io/upload_images/676457-d3c427d921469665.gif?imageMogr2/auto-orient/strip)
 
 接下来便详细解析一下如何完成这个功能，了解其中的原理，这样就能举一反三，实现其他类似的动画效果了。
@@ -22,12 +10,68 @@ tags:
 
 [https://github.com/crazyandcoder/ChargeProgress](https://github.com/crazyandcoder/ChargeProgress)
 
+### 使用方式
+
+```
+compile 'liji.library.dev:chargingprogress:0.1.0'
+```
+
+添加自定义属性的命名空间引用：
+
+```
+xmlns:tools="http://schemas.android.com/tools"
+```
+
+在代码中添加属性
+
+```
+<com.example.chargingprogress.ChargingProgess
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cgv_item_count="10"
+        app:cgv_item_height="20dp"
+        app:cgv_item_width="50dp" />
+```
+**注意事项**
+
+控件的宽度和高度都必须为wrap_content，因为它是根据里面的item_width、item_height、以及item_count的数量进行计算出width和height的。切记切记！！！
+
+> android:layout_width="wrap_content"
+> android:layout_height="wrap_content"
+
+属性介绍：
+	   
+
+```
+ <!--item个数-->
+        <attr name="cgv_item_count" format="integer" />
+        <!--边界宽度-->
+        <attr name="cgv_border_width" format="dimension" />
+        <!--边界颜色-->
+        <attr name="cgv_border_color" format="color" />
+        <!--圆角半径-->
+        <attr name="cgv_border_cornor_radius" format="dimension" />
+        <!--充电内每个进度item模块的宽度-->
+        <attr name="cgv_item_width" format="dimension" />
+        <!--充电内每个进度item模块的高度-->
+        <attr name="cgv_item_height" format="dimension" />
+        <!--充电内每个进度item模块的前景色，充电中的颜色-->
+        <attr name="cgv_item_charging_src" format="color" />
+        <!--充电内每个进度item模块的背景色，未充电的颜色-->
+        <attr name="cgv_item_charging_background" format="color" />
+        <!--view 的背景-->
+        <attr name="cgv_background" format="color" />
+```
+
+
+----------
+接下来进入正文！
 
 ### 图形解析
 
 一般，我们自定义view时，是将该view进行化解，分成一个一个小部分，然后在重叠起来进行绘制，对于这个项目，也是按照相同的步骤进行。我们用Word来简单解析一下该动画所包含的基本结构。
 
-![](http://img.blog.csdn.net/20161206213911483?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGlqaV94Yw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![](http://upload-images.jianshu.io/upload_images/676457-f2d29a18e45435eb?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 对于这个充电进度view，我将它分成了ABCD四个部分，下面来详细说明各个部分的组成。
 
@@ -365,8 +409,3 @@ mPaint.setStyle(Paint.Style.STROKE);
 [3. github https://github.com/crazyandcoder](https://github.com/crazyandcoder)
 
 [4. 开源中国 https://my.oschina.net/crazyandcoder/blog](https://my.oschina.net/crazyandcoder/blog)
-
- 
-
-
-
