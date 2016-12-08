@@ -13,13 +13,13 @@
 ### 使用方式
 
 ```
-compile 'liji.library.dev:chargingprogress:0.1.0'
+compile 'liji.library.dev:chargingprogress:0.4.0'
 ```
 
 添加自定义属性的命名空间引用：
 
 ```
-xmlns:tools="http://schemas.android.com/tools"
+xmlns:tools="http://schemas.android.com/apk/res-auto"
 ```
 
 在代码中添加属性
